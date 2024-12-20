@@ -55,6 +55,7 @@ python do_acrn_sblimage() {
     genContainerCmd = genContainerCmd + " -o %s/%s" % (d.getVar('WORKDIR'), d.getVar('SBLIMAGE_NAME'))
     genContainerCmd = genContainerCmd + " -k %s" % (d.getVar('PREGENERATED_SIGNING_KEY_SLIMBOOT_KEY_SHA256'))
     genContainerCmd = genContainerCmd + " -t MULTIBOOT"
+    genContainerCmd = genContainerCmd + " -a RSA3072_PSS_SHA2_384"
 
     bb.debug(1, "genContainerCmd: %s" % (genContainerCmd))
     subprocess.check_call(genContainerCmd, shell=True)
